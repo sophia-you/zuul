@@ -60,7 +60,7 @@ int main()
 
   // central park
   char* parkDescription = new char[100];
-  strcpy(parkDescription, "You have stepped outside into Central Park, the center of the Dragon's Market. Wild animals roam free in the bamboo forest.");
+  strcpy(parkDescription, "You have stepped outside into Central Park. Wild animals roam free in the bamboo forest.");
   Room* park = new Room(parkDescription);
 
   // udon restaurant
@@ -92,5 +92,36 @@ int main()
   char* bakeryDescription = new char[100];
   strcpy(bakeryDescription, "You have arrived at the Fresh Bread Bakery, which sells a variety of aromatic baked goods.");
   Room* bakery = new Room(bakeryDescription);
+
+  // EXITS
+  chowmein->setExit(east, ricecake);
+  chowmein->setExit(south, springroll);
+  
+  ricecake->setExit(west, chowmein);
+  ricecake->setExit(east, ramen);
+
+  ramen->setExit(west, ricecake);
+  ramen->setExit(south, park);
+  ramen->setExit(east, sesame);
+
+  sesame->setExit(west, ramen);
+  sesame->setExit(south, pancake);
+
+  pancake->setExit(north, sesame);
+  pancake->setExit(south, udon);
+
+  springroll->setExit(north, chowmein);
+  springroll->setExit(south, wonton);
+
+  wonton->setExit(north, springroll);
+  wonton->setExit(east, pho);
+
+  pho->setExit(west, wonton);
+  pho->setExit(south, tofu);
+  pho->setExit(east, park);
+
+  park->setExit(north, ramen);
+  park->setExit(west, pho);
+  park->setExit(south, entrance);
 
 }
