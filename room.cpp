@@ -7,7 +7,7 @@ using namespace std;
 
 Room::Room() // default constructor
 {
-  
+  description = new char[100];
 }
 
 Room::Room(char* newdescription) // constructor with description passed in
@@ -36,4 +36,22 @@ void Room::printExits() // prints all possible exits
     }
 }
 
+// change description
+void Room::setDescription(char* newdescription)
+{
+  strcpy(description, newdescription);
+  }
 
+// checks if the input command has an exit
+Room* Room::getExit(char* input)
+{
+  cout << "" << endl;
+  for(map<char*, Room*>:: iterator it = exits.begin(); it != exits.end(); it++)
+    {
+      if(strcmp(it->first, input) == 0) // if the direction matches an exit
+	{
+	  return it->second; // return the room from that exit
+	}
+    }
+  return NULL;
+}
